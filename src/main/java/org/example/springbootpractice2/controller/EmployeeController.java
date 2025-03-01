@@ -28,4 +28,9 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId) {
         return new ResponseEntity<>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
     }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getEmployees() {
+        return ResponseEntity.ok(employeeService.getAllEmployees());
+    }
 }

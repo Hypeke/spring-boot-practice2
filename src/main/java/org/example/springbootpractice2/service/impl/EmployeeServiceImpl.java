@@ -9,6 +9,9 @@ import org.example.springbootpractice2.repository.EmployeeRepository;
 import org.example.springbootpractice2.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -29,4 +32,13 @@ public class EmployeeServiceImpl implements EmployeeService {
                         new ResourceNotFoundException("Employee with id " + employeeId + " not found"));
         return EmployeeMapper.toEmployeeDto(employee);
     }
+
+    @Override
+    public List<EmployeeDto> getAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream().map((employee) -> EmployeeMapper.toEmployeeDto(employee))
+                .collect(Collectors.toList());
+    }
+
+
 }
