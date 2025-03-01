@@ -5,7 +5,7 @@ import org.example.springbootpractice2.entity.Employee;
 
 public class EmployeeMapper {
 
-    public EmployeeDto toEmployeeDto(Employee employee) {
+    public static EmployeeDto toEmployeeDto(Employee employee) {
         return new EmployeeDto(
                 employee.getId(),
                 employee.getFirstName(),
@@ -14,7 +14,7 @@ public class EmployeeMapper {
         );
     }
 
-    public Employee toEmployee(EmployeeDto employeeDto) {
+    public static Employee toEmployee(EmployeeDto employeeDto) {
         return new Employee(
                 employeeDto.getId(),
                 employeeDto.getFirstName(),
